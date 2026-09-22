@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f172a">
+  <title>MinhAnh Tool</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">📋 MinhAnh Tool</div>
+    <nav>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#accounts">Tài khoản</a>
+      <a href="#nurture">Nuôi tài khoản</a>
+      <a href="#logs">Logs</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="dashboard" class="page">
+      <h1>Dashboard</h1>
+      <div class="stats">
+        <div class="stat"><span>Tổng tài khoản</span><b id="totalCount">0</b></div>
+        <div class="stat"><span>Đã đăng nhập</span><b id="loggedCount">0</b></div>
+        <div class="stat"><span>Cần đăng nhập lại</span><b id="reloginCount">0</b></div>
+        <div class="stat"><span>Chưa đăng nhập</span><b id="notLoggedCount">0</b></div>
+      </div>
+
+      <div class="card">
+        <h2>Đăng nhập chính thức</h2>
+        <p class="muted">Các nút này mở trực tiếp website chính thức. Tool không lưu mật khẩu hoặc cookie.</p>
+        <div class="actions">
+          <button class="btn" data-login="facebook">Facebook</button>
+          <button class="btn" data-login="google">Google</button>
+          <button class="btn" data-login="youtube">YouTube</button>
+          <button class="btn" data-login="instagram">Instagram</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="accounts" class="page">
+      <h1>Quản lý tài khoản</h1>
+
+      <div class="card">
+        <h2>Thêm tài khoản</h2>
+        <form id="accountForm">
+          <div class="form-grid">
+            <label>Nền tảng
+              <select id="platform" required>
+                <option value="facebook">Facebook</option>
+                <option value="google">Google</option>
+                <option value="youtube">YouTube</option>
+                <option value="instagram">Instagram</option>
+              </select>
+            </label>
+            <label>Tên tài khoản
+              <input id="username" required placeholder="Tên tài khoản">
+            </label>
+            <label>Email
+              <input id="email" type="email" placeholder="email@example.com">
+            </label>
+            <label>Ghi chú
+              <input id="note" placeholder="Ví dụ: tài khoản chính">
+            </label>
+          </div>
+          <button class="btn" type="submit">+ Thêm tài khoản</button>
+        </form>
+      </div>
+
+      <div class="card table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th><th>Nền tảng</th><th>Tài khoản</th><th>Email</th>
+              <th>Trạng thái</th><th>Cập nhật</th><th>Thao tác</th>
+            </tr>
+          </thead>
+          <tbody id="accountTable"></tbody>
+        </table>
+        <div id="emptyAccounts" class="empty">Chưa có tài khoản.</div>
+      </div>
+    </section>
+
+    <section id="nurture" class="page">
+      <h1>🌱 Nuôi tài khoản</h1>
+      <div class="card">
+        <p class="muted">
+          Đây là bảng theo dõi trạng thái. Các thao tác đăng nhập được thực hiện trực tiếp
+          trên website chính thức; không có tự động hóa đăng nhập, CAPTCHA hay lưu cookie.
+        </p>
+        <div id="nurtureList"></div>
+      </div>
+    </section>
+
+    <section id="logs" class="page">
+      <h1>📜 Logs</h1>
+      <div class="card">
+        <div id="logsList"></div>
+        <div id="emptyLogs" class="empty">Chưa có log.</div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
